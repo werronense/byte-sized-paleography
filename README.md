@@ -145,9 +145,6 @@ DELETE /api/user/:id
 Users will create user profiles and log in to use the app. The server will authenticate users when they log in and provide JWT tokens to authorize HTTP requests.
 
 ## Roadmap
-
-Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation. Think about what you can reasonably complete before the due date. The more detail you provide, the easier it will be to build.
-
 #### Week 1
 ##### Back-End
 - Create repository
