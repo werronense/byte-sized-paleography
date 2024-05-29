@@ -14,9 +14,9 @@ Unfortunately, you've looked all over the web and you can't find anything that w
 
 ### User Profile
 
-The user of this app is someone who loves learning. They could be a graduate student in a medieval studies program, an amateur handwriting enthusiast, or someone who likes games and puzzles.
+The user of this app is someone who loves learning. They could be a graduate student in a medieval studies program, an amateur handwriting enthusiast, or someone who enjoys games and puzzles.
 
-The user will use the app to practice transcribing, track their progress, and compare their results to other users.
+The user will use the app to practice transcribing, track their progress, and compare their results to those of other users.
 
 ### Features
 
@@ -132,7 +132,7 @@ POST /api/user/:userId/text/:textId
 
 - Response: 201
 
-PUT /api/user/:id
+PATCH /api/user/:id
 
 - Response: 200, `{ username, score }`
 
