@@ -3,17 +3,24 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./App.scss";
 
+import LandingPage from "./pages/LandingPage/LandingPage";
+import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import TranscriptionPage from "./pages/TranscriptionPage/TranscriptionPage";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<p>landing page</p>} />
-        <Route path="/register" element={<p>registration page</p>} />
-        <Route path="/login" element={<p>login page</p>} />
-        <Route path="/profile" element={<p>profile page</p>} />
-        <Route path="/update-profile" element={<p>update profile page</p>} />
-        <Route path="/transcribe" element={<p>transcribe page</p>} />
-        <Route path="*" element={<p>404 Page Not Found</p>} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/update-profile" element={<ProfilePage />} />
+        <Route path="/transcribe" element={<TranscriptionPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );
