@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 
@@ -10,6 +11,13 @@ const TranscriptionPage = () => {
   const [text, setText] = useState({});
   const [userInput, setUserInput] = useState("");
 
+  const navigate = useNavigate();
+
+  const getText = async () => {
+    const response = await axios.get(`${VITE_API_BASE_URL}/api/text`);
+    setText(response.data);
+  };
+
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
   };
@@ -17,14 +25,18 @@ const TranscriptionPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // todo: POST /api/user/:userId/text/:textId
-    // todo: GET /api/text
+
+    getText();
   };
 
+  const handleClick = () => {
+    // todo: check if input matches transcription
+    // todo: if input matches description, POST /api/user/:userId/text/:textId
+    
+    navigate("/profile");
+  }
+
   useEffect(() => {
-    const getText = async () => {
-      const response = await axios.get(`${VITE_API_BASE_URL}/api/text`);
-      setText(response.data);
-    };
     getText();
   }, []);
 
@@ -56,9 +68,14 @@ const TranscriptionPage = () => {
             value={userInput}
             onChange={handleInputChange}
           ></input>
-          <button type="submit" disabled={userInput !== text.transcription}>
-            Next
-          </button>
+          <div>
+            <button type="button" onClick={handleClick}>
+              Home
+            </button>
+            <button type="submit" disabled={userInput !== text.transcription}>
+              Next
+            </button>
+          </div>
         </form>
       </div>
     )
