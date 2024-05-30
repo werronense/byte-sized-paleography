@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./RegistrationPage.scss";
 
+const { VITE_API_BASE_URL } = import.meta.env;
+
 const RegistrationPage = () => {
   const initialValues = {
     username: "",
@@ -33,16 +35,29 @@ const RegistrationPage = () => {
     });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(`${VITE_API_BASE_URL}/api/register`, formValues);
+      
+      if (response.data.success) navigate("/login");
+    } catch (err) {
+      console.log(err.response.data.error);
+    }
+  }
+
   return (
     <>
       <h1>Get Started</h1>
-      <form>
+      <form onSubmit={handleSubmit} action="/register">
         <div>
-          <label htmlFor="username">User name: </label>
+          <label htmlFor="username">Username: </label>
           <input
             type="text"
             name="username"
             id="username"
+            placeholder="choose a username"
             value={formValues.username}
             onChange={handleInputChange}
             required
@@ -54,6 +69,7 @@ const RegistrationPage = () => {
             type="email"
             name="email"
             id="email"
+            placeholder="enter your email address"
             value={formValues.email}
             onChange={handleInputChange}
             required
@@ -65,6 +81,7 @@ const RegistrationPage = () => {
             type="password"
             name="password"
             id="password"
+            placeholder="choose a password"
             value={formValues.password}
             onChange={handleInputChange}
             required
