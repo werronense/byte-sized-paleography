@@ -11,10 +11,17 @@ const TranscriptionPage = () => {
   const [text, setText] = useState({});
   const [userInput, setUserInput] = useState("");
 
+  // get the authentication token from sessionStorage
+  const { token } = sessionStorage;
+
   const navigate = useNavigate();
 
   const getText = async () => {
-    const response = await axios.get(`${VITE_API_BASE_URL}/api/text`);
+    const response = await axios.get(`${VITE_API_BASE_URL}/api/text`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     setText(response.data);
   };
 
@@ -24,19 +31,22 @@ const TranscriptionPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // todo: POST /api/user/:userId/text/:textId
+    // todo: POST /api/user/text
 
     getText();
   };
 
   const handleClick = () => {
     // todo: check if input matches transcription
-    // todo: if input matches description, POST /api/user/:userId/text/:textId
-    
+    // todo: if input matches description, POST /api/user/text
+
     navigate("/profile");
-  }
+  };
 
   useEffect(() => {
+    // redirect unauthorized users to the login page
+    if (!token) return navigate("/login");
+
     getText();
   }, []);
 
