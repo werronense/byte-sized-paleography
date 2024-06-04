@@ -57,9 +57,11 @@ const TranscriptionPage = () => {
     await getText();
   };
 
-  const handleClick = () => {
-    // todo: check if input matches transcription
-    // todo: if input matches description, POST /api/user/text
+  const handleClick = async () => {
+    if (userInput === text.transcription) {
+      // POST /api/user/text
+      await updateUsersTexts();
+    }
 
     navigate("/profile");
   };
