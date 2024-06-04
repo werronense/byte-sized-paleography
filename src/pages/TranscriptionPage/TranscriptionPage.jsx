@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from "uuid";
 
 import "./TranscriptionPage.scss";
 
+import Btn from "../../components/Btn/Btn";
+
 const { VITE_API_BASE_URL } = import.meta.env;
 
 const TranscriptionPage = () => {
@@ -79,12 +81,18 @@ const TranscriptionPage = () => {
             onChange={handleInputChange}
           ></input>
           <div>
-            <button type="button" onClick={handleClick}>
-              Home
-            </button>
-            <button type="submit" disabled={userInput !== text.transcription}>
-              Next
-            </button>
+            <Btn
+              btnType="button"
+              btnText="Home"
+              btnDisabled={false}
+              clickHandler={handleClick}
+            />
+            <Btn
+              btnType="submit"
+              btnText="Next"
+              btnModifier="success"
+              btnDisabled={userInput !== text.transcription}
+            />
           </div>
         </form>
       </div>
