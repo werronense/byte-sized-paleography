@@ -13,9 +13,13 @@ const ProfilePage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const { token } = sessionStorage;
+
+    // redirect unauthorized users to the login page
+    if (!token) return navigate("/login");
+
     // query database and set user with useEffect on page load
     const getUser = async () => {
-      const { token } = sessionStorage;
 
       try {
         const response = await axios.get(`${VITE_API_BASE_URL}/api/profile`, {
@@ -53,7 +57,7 @@ const ProfilePage = () => {
       </div>
       <div>
         <ul>
-          {leaderboard?.map(topUser => (
+          {leaderboard?.map((topUser) => (
             <li key={topUser.id}>
               <span>{topUser.username}</span>
               <span>{`${topUser.score} pts`}</span>
