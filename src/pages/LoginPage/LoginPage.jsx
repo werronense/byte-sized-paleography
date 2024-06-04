@@ -5,6 +5,7 @@ import axios from "axios";
 import "./LoginPage.scss";
 
 import FormFieldInput from "../../components/FormFieldInput/FormFieldInput";
+import Btn from "../../components/Btn/Btn";
 
 const { VITE_API_BASE_URL } = import.meta.env;
 
@@ -76,12 +77,18 @@ const LoginPage = () => {
           isRequired={true}
         />
         <div>
-          <button type="button" onClick={() => navigate("/")}>
-            Cancel
-          </button>
-          <button type="submit" disabled={!isFormValid}>
-            Log In
-          </button>
+          <Btn
+            btnType="button"
+            btnText="Cancel"
+            btnDisabled={false}
+            clickHandler={() => navigate("/")}
+          />
+          <Btn
+            btnType="submit"
+            btnText="Log In"
+            btnModifier="success"
+            btnDisabled={!isFormValid}
+          />
         </div>
       </form>
     </>
