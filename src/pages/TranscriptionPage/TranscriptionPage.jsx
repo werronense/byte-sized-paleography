@@ -27,15 +27,34 @@ const TranscriptionPage = () => {
     setText(response.data);
   };
 
+  const updateUsersTexts = async () => {
+    try {
+      await axios.post(
+        `${VITE_API_BASE_URL}/api/user/text`,
+        { textId: text.id },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (err) {
+      console.error("Request to POST /api/user/text failed: ", err);
+    }
+  };
+
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // todo: POST /api/user/text
 
-    getText();
+    // POST /api/user/text
+    await updateUsersTexts();
+
+    // GET /api/text
+    await getText();
   };
 
   const handleClick = () => {
