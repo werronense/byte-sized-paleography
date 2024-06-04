@@ -1,6 +1,8 @@
 import { useNavigate, Link } from "react-router-dom";
 import "./LandingPage.scss";
 
+import Btn from "../../components/Btn/Btn";
+
 const LandingPage = () => {
   const navigate = useNavigate();
 
@@ -8,12 +10,18 @@ const LandingPage = () => {
     <>
       <h1>Byte-Sized Medieval Paleography</h1>
       <div>
-        <button type="button" onClick={() => navigate("/register")}>
-          Register
-        </button>
-        <button type="button" onClick={() => navigate("/login")}>
-          Sign In
-        </button>
+        <Btn
+          btnType="button"
+          btnText="Register"
+          btnDisabled={false}
+          clickHandler={() => navigate("/register")}
+        />
+        <Btn
+          btnType="button"
+          btnText="Sign In"
+          btnDisabled={false}
+          clickHandler={() => navigate("/login")}
+        />
       </div>
       <p>
         Master the skill of reading old handwriting (paleography) the fun and
