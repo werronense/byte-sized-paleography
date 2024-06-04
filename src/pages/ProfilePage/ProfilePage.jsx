@@ -67,6 +67,12 @@ const ProfilePage = () => {
         </ul>
       </div>
       <div>
+      <Btn
+          btnType="button"
+          btnText="Edit Profile"
+          btnDisabled={false}
+          clickHandler={() => navigate("/update-profile")}
+        />
         <Btn
           btnType="button"
           btnText="Play Game!"
