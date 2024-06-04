@@ -43,9 +43,23 @@ const TranscriptionPage = () => {
         }
       );
     } catch (err) {
-      console.error("Request to POST /api/user/text failed: ", err);
+      console.error("POST request to /api/user/text failed: ", err);
     }
   };
+
+  const updateUserScore = async () => {
+    try {
+      await axios.patch(`${VITE_API_BASE_URL}/api/users/score`,
+      { score: text.point_value },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    } catch (err) {
+      console.error("POST request to /api/users/score failed: ", err);
+    }
+  }
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
@@ -57,6 +71,9 @@ const TranscriptionPage = () => {
     // POST /api/user/text
     await updateUsersTexts();
 
+    // POST /api/users/score
+    await updateUserScore();
+
     // GET /api/text
     await getText();
   };
@@ -65,6 +82,9 @@ const TranscriptionPage = () => {
     if (userInput === text.transcription) {
       // POST /api/user/text
       await updateUsersTexts();
+
+      // POST /api/users/score
+      await updateUserScore();
     }
 
     navigate("/profile");
