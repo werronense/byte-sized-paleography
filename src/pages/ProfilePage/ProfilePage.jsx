@@ -44,8 +44,20 @@ const ProfilePage = () => {
   return (
     <>
       <h1>Profile Page</h1>
-      <div></div>
-      <div></div>
+      <div>
+        <p>{user.username}</p>
+        <p>{user.score}</p>
+      </div>
+      <div>
+        <ul>
+          {leaderboard?.map(topUser => (
+            <li key={topUser.id}>
+              <span>{topUser.username}</span>
+              <span>{`${topUser.score} pts`}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 };
