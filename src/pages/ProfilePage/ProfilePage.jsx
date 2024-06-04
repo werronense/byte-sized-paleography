@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const { VITE_API_BASE_URL } = import.meta.env;
-
 import "./ProfilePage.scss";
+
+import Btn from "../../components/Btn/Btn";
+
+const { VITE_API_BASE_URL } = import.meta.env;
 
 const ProfilePage = () => {
   const [user, setUser] = useState({});
@@ -20,7 +22,6 @@ const ProfilePage = () => {
 
     // query database and set user with useEffect on page load
     const getUser = async () => {
-
       try {
         const response = await axios.get(`${VITE_API_BASE_URL}/api/profile`, {
           headers: {
@@ -66,9 +67,13 @@ const ProfilePage = () => {
         </ul>
       </div>
       <div>
-        <button type="button" onClick={() => navigate("/transcribe")}>
-          Play Game!
-        </button>
+        <Btn
+          btnType="button"
+          btnText="Play Game!"
+          btnModifier="success"
+          btnDisabled={false}
+          clickHandler={() => navigate("/transcribe")}
+        />
       </div>
     </>
   );
