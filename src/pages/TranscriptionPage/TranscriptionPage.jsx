@@ -19,12 +19,16 @@ const TranscriptionPage = () => {
   const navigate = useNavigate();
 
   const getText = async () => {
-    const response = await axios.get(`${VITE_API_BASE_URL}/api/text`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    setText(response.data);
+    try {
+      const response = await axios.get(`${VITE_API_BASE_URL}/api/text`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setText(response.data);
+    } catch (err) {
+      console.error("GET request to /api/text failed: ", err);
+    }
   };
 
   const updateUsersTexts = async () => {
