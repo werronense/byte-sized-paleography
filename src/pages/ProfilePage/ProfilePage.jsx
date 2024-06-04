@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const { VITE_API_BASE_URL } = import.meta.env;
@@ -8,6 +9,8 @@ import "./ProfilePage.scss";
 const ProfilePage = () => {
   const [user, setUser] = useState({});
   const [leaderboard, setLeaderboard] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     // query database and set user with useEffect on page load
@@ -57,6 +60,11 @@ const ProfilePage = () => {
             </li>
           ))}
         </ul>
+      </div>
+      <div>
+        <button type="button" onClick={() => navigate("/transcribe")}>
+          Play Game!
+        </button>
       </div>
     </>
   );
