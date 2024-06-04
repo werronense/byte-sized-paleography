@@ -19,28 +19,73 @@ const TranscriptionPage = () => {
   const navigate = useNavigate();
 
   const getText = async () => {
-    const response = await axios.get(`${VITE_API_BASE_URL}/api/text`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    setText(response.data);
+    try {
+      const response = await axios.get(`${VITE_API_BASE_URL}/api/text`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setText(response.data);
+    } catch (err) {
+      console.error("GET request to /api/text failed: ", err);
+    }
   };
+
+  const updateUsersTexts = async () => {
+    try {
+      await axios.post(
+        `${VITE_API_BASE_URL}/api/user/text`,
+        { textId: text.id },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (err) {
+      console.error("POST request to /api/user/text failed: ", err);
+    }
+  };
+
+  const updateUserScore = async () => {
+    try {
+      await axios.patch(`${VITE_API_BASE_URL}/api/users/score`,
+      { score: text.point_value },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    } catch (err) {
+      console.error("POST request to /api/users/score failed: ", err);
+    }
+  }
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // todo: POST /api/user/text
 
-    getText();
+    // POST /api/user/text
+    await updateUsersTexts();
+
+    // POST /api/users/score
+    await updateUserScore();
+
+    // GET /api/text
+    await getText();
   };
 
-  const handleClick = () => {
-    // todo: check if input matches transcription
-    // todo: if input matches description, POST /api/user/text
+  const handleClick = async () => {
+    if (userInput === text.transcription) {
+      // POST /api/user/text
+      await updateUsersTexts();
+
+      // POST /api/users/score
+      await updateUserScore();
+    }
 
     navigate("/profile");
   };
