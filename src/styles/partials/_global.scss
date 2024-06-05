@@ -1,8 +1,14 @@
+@use "./variables" as *;
+
 // import fonts
 @font-face {
   font-family: "Unifraktur Cook";
   font-weight: 700;
   src: url("./assets/fonts/UnifrakturCook-Bold.ttf") format("truetype");
+}
+
+body {
+  color: $dark-primary;
 }
 
 // headings
