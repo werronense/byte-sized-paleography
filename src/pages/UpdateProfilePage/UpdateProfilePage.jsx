@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import "./UpdateProfilePage.scss";
@@ -14,12 +15,15 @@ const UpdateProfilePage = () => {
   // redirect unauthorized users to the login page
   if (!token) return navigate("/login");
 
+  const navigate = useNavigate();
+
   const initialValues = {
     username: "",
     email: "",
     password: "",
   };
 
+  // component states
   const [formValues, setFormValues] = useState(initialValues);
   const [messages, setMessages] = useState(initialValues);
 
@@ -71,7 +75,24 @@ const UpdateProfilePage = () => {
     }
   };
 
-  // todo: handleDeleteUser
+  // handle delete user
+  const handleDeleteUser = async () => {
+    try {
+      await axios.delete(`${VITE_API_BASE_URL}/api/users/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      // clear token of deleted user from sessionStorage
+      sessionStorage.clear();
+
+      // redirect to home page
+      navigate("/");
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <>
@@ -124,6 +145,15 @@ const UpdateProfilePage = () => {
         />
         <Btn btnType="submit" btnText="Change Password" btnDisabled={false} />
       </form>
+      <div>
+        <Btn
+          btnType="button"
+          btnText="Delete Account"
+          btnModifier="danger"
+          clickHandler={handleDeleteUser}
+          btnDisabled={false}
+        />
+      </div>
     </>
   );
 };
