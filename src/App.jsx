@@ -7,6 +7,7 @@ import LandingPage from "./pages/LandingPage/LandingPage";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import UpdateProfilePage from "./pages/UpdateProfilePage/UpdateProfilePage";
 import TranscriptionPage from "./pages/TranscriptionPage/TranscriptionPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
@@ -18,7 +19,7 @@ function App() {
         <Route path="/register" element={<RegistrationPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/update-profile" element={<ProfilePage />} />
+        <Route path="/update-profile" element={<UpdateProfilePage />} />
         <Route path="/transcribe" element={<TranscriptionPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
