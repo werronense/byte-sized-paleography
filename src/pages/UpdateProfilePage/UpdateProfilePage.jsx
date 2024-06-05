@@ -9,6 +9,11 @@ import Btn from "../../components/Btn/Btn";
 const { VITE_API_BASE_URL } = import.meta.env;
 
 const UpdateProfilePage = () => {
+  const { token } = sessionStorage;
+
+  // redirect unauthorized users to the login page
+  if (!token) return navigate("/login");
+
   const initialValues = {
     username: "",
     email: "",
@@ -28,11 +33,53 @@ const UpdateProfilePage = () => {
     });
   };
 
+  const handleUsernameSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.patch(
+        `${VITE_API_BASE_URL}/api/users/username`,
+        { username: formValues.username },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      // update messages with success message (response.data)
+      setMessages({
+        ...messages,
+        username: response.data
+      })
+
+      // reset username form
+      setFormValues({
+        ...formValues,
+        username: "",
+      });
+    } catch (err) {
+      console.error(err);
+      
+      // update messages with error message (err.response.data)
+      setMessages({
+        ...messages,
+        username: err.response.data
+      })
+    }
+  };
+
+  // todo: handleEmailSubmit
+
+  // todo: handlePasswordSubmit
+
+  // todo: handleDeleteUser
+
   return (
     <>
       <h1>Update Profile</h1>
-      <form action="/update-profile">
-        <p>{messages.username}</p>
+      <form onSubmit={handleUsernameSubmit} action="/update-profile">
+        <p>{messages.username.message || messages.username.error || ""}</p>
         <FormFieldInput
           labelText="New Username"
           inputType="text"
