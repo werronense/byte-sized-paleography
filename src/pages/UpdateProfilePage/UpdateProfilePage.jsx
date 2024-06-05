@@ -24,6 +24,7 @@ const UpdateProfilePage = () => {
   const [messages, setMessages] = useState(initialValues);
 
   // event handlers
+  // handle input change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -33,13 +34,14 @@ const UpdateProfilePage = () => {
     });
   };
 
-  const handleUsernameSubmit = async (e) => {
+  // handle form submissions
+  const handleFormSubmit = async (e, formName) => {
     e.preventDefault();
 
     try {
       const response = await axios.patch(
-        `${VITE_API_BASE_URL}/api/users/username`,
-        { username: formValues.username },
+        `${VITE_API_BASE_URL}/api/users/${formName}`,
+        { [formName]: formValues[formName] },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -50,22 +52,22 @@ const UpdateProfilePage = () => {
       // update messages with success message (response.data)
       setMessages({
         ...messages,
-        username: response.data
-      })
+        [formName]: response.data,
+      });
 
       // reset username form
       setFormValues({
         ...formValues,
-        username: "",
+        [formName]: "",
       });
     } catch (err) {
       console.error(err);
-      
+
       // update messages with error message (err.response.data)
       setMessages({
         ...messages,
-        username: err.response.data
-      })
+        [formName]: err.response.data,
+      });
     }
   };
 
@@ -78,7 +80,10 @@ const UpdateProfilePage = () => {
   return (
     <>
       <h1>Update Profile</h1>
-      <form onSubmit={handleUsernameSubmit} action="/update-profile">
+      <form
+        onSubmit={(e) => handleFormSubmit(e, "username")}
+        action="/update-profile"
+      >
         <p>{messages.username.message || messages.username.error || ""}</p>
         <FormFieldInput
           labelText="New Username"
