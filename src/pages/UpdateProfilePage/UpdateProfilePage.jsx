@@ -71,10 +71,6 @@ const UpdateProfilePage = () => {
     }
   };
 
-  // todo: handleEmailSubmit
-
-  // todo: handlePasswordSubmit
-
   // todo: handleDeleteUser
 
   return (
@@ -96,8 +92,11 @@ const UpdateProfilePage = () => {
         />
         <Btn btnType="submit" btnText="Change Username" btnDisabled={false} />
       </form>
-      <form action="/update-profile">
-        <p>{messages.email}</p>
+      <form
+        onSubmit={(e) => handleFormSubmit(e, "email")}
+        action="/update-profile"
+      >
+        <p>{messages.email.message || messages.email.error || ""}</p>
         <FormFieldInput
           labelText="New Email"
           inputType="email"
@@ -109,8 +108,11 @@ const UpdateProfilePage = () => {
         />
         <Btn btnType="submit" btnText="Change Email" btnDisabled={false} />
       </form>
-      <form action="/update-profile">
-        <p>{messages.password}</p>
+      <form
+        onSubmit={(e) => handleFormSubmit(e, "password")}
+        action="/update-profile"
+      >
+        <p>{messages.password.message || messages.password.error || ""}</p>
         <FormFieldInput
           labelText="New Password"
           inputType="password"
