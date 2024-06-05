@@ -1,5 +1,10 @@
 @use "./variables" as *;
 
+// global settings
+* {
+  box-sizing: border-box;
+}
+
 // import fonts
 @font-face {
   font-family: "Unifraktur Cook";
@@ -9,6 +14,8 @@
 
 body {
   color: $dark-primary;
+  margin: 0;
+  padding: 0;
 }
 
 // headings
