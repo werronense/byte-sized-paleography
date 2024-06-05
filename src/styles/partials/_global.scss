@@ -1,0 +1,13 @@
+// import fonts
+@font-face {
+  font-family: "Unifraktur Cook";
+  font-weight: 700;
+  src: url("./assets/fonts/UnifrakturCook-Bold.ttf") format("truetype");
+}
+
+// headings
+h1,
+h2 {
+  font-family: "Unifraktur Cook";
+  font-weight: 700;
+}
