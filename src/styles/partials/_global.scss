@@ -1,8 +1,22 @@
+@use "./variables" as *;
+
+// global settings
+* {
+  box-sizing: border-box;
+}
+
 // import fonts
 @font-face {
   font-family: "Unifraktur Cook";
   font-weight: 700;
   src: url("./assets/fonts/UnifrakturCook-Bold.ttf") format("truetype");
+}
+
+body {
+  background-color: $light-primary;
+  color: $dark-primary;
+  margin: 0;
+  padding: 0;
 }
 
 // headings
