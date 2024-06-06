@@ -107,51 +107,53 @@ const TranscriptionPage = () => {
   return (
     text && (
       <div className="transcription">
-        <div className="transcription__container">
-          <img
-            className="transcription__image"
-            src={`${VITE_API_BASE_URL}/images/${text.image_url}`}
-            alt=""
-          />
-        </div>
-        <p className="transcription__text">
-          {userInput?.split("").map((letter, i) => (
-            <span
-              key={uuidv4()}
-              className={`transcription__letter ${
-                letter === text.transcription[i]
-                  ? ""
-                  : "transcription__letter--error"
-              }`}
-            >
-              {letter}
-            </span>
-          ))}
-        </p>
-        <form className="transcription__interface" onSubmit={handleSubmit}>
-          <input
-            className="transcription__input"
-            name="input"
-            type="text"
-            value={userInput}
-            onChange={handleInputChange}
-            autoFocus={true}
-          ></input>
-          <div className="transcription__controls">
-            <Btn
-              btnType="button"
-              btnText="Home"
-              btnDisabled={false}
-              clickHandler={handleClick}
-            />
-            <Btn
-              btnType="submit"
-              btnText="Next"
-              btnModifier="success"
-              btnDisabled={userInput !== text.transcription}
+        <div className="transcription__content-container">
+          <div className="transcription__image-display">
+            <img
+              className="transcription__image"
+              src={`${VITE_API_BASE_URL}/images/${text.image_url}`}
+              alt=""
             />
           </div>
-        </form>
+          <p className="transcription__text">
+            {userInput?.split("").map((letter, i) => (
+              <span
+                key={uuidv4()}
+                className={`transcription__letter ${
+                  letter === text.transcription[i]
+                    ? ""
+                    : "transcription__letter--error"
+                }`}
+              >
+                {letter}
+              </span>
+            ))}
+          </p>
+          <form className="transcription__interface" onSubmit={handleSubmit}>
+            <input
+              className="transcription__input"
+              name="input"
+              type="text"
+              value={userInput}
+              onChange={handleInputChange}
+              autoFocus={true}
+            ></input>
+            <div className="transcription__controls">
+              <Btn
+                btnType="button"
+                btnText="Home"
+                btnDisabled={false}
+                clickHandler={handleClick}
+              />
+              <Btn
+                btnType="submit"
+                btnText="Next"
+                btnModifier="success"
+                btnDisabled={userInput !== text.transcription}
+              />
+            </div>
+          </form>
+        </div>
       </div>
     )
   );

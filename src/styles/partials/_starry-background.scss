@@ -1,0 +1,6 @@
+@use "./variables" as *;
+
+@mixin starry-background {
+  background: url("../../assets/images/star-background.png"),
+    linear-gradient(0deg, $dark-secondary, 50%, $dark-primary);
+}
