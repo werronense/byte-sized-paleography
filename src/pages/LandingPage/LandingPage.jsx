@@ -19,6 +19,7 @@ const LandingPage = () => {
         <Btn
           btnType="button"
           btnText="Sign In"
+          btnModifier="success"
           btnDisabled={false}
           clickHandler={() => navigate("/login")}
         />

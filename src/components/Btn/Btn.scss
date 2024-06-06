@@ -1,0 +1,32 @@
+@use "../../styles/partials/variables" as *;
+
+.btn {
+  background-color: $light-secondary;
+  border: 1px solid $dark-secondary;
+  border-radius: 4px;
+  color: $dark-secondary;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+
+  &--success {
+    background-color: $success;
+    border-color: $success;
+    color: $light-primary;
+  }
+
+  &--warn {
+    background-color: $warn;
+    border-color: $warn;
+    color: $light-primary;
+  }
+
+  &--danger {
+    background-color: $danger;
+    border-color: $danger;
+    color: $light-primary;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
