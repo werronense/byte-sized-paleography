@@ -5,7 +5,7 @@
 
 .transcription {
   @include flex($direction: column);
-  height: 100vh;
+  flex-grow: 1;
 
   @include tablet {
     @include starry-background;
