@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./App.scss";
 
+import Header from "./components/Header/Header";
+
 import LandingPage from "./pages/LandingPage/LandingPage";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -14,6 +16,7 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 function App() {
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<RegistrationPage />} />

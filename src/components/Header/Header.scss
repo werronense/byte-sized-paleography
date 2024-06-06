@@ -1,0 +1,50 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/flex" as *;
+
+.site-header {
+  @include flex($direction: column, $align: center);
+  background-color: $dark-secondary;
+  color: $light-tertiary;
+  gap: 1.5rem;
+  padding: 1.25rem 1rem;
+  width: 100%;
+
+  @include tablet {
+    background-color: $dark-primary;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.75rem 2rem 2rem 2rem;
+  }
+
+  &__link {
+    color: $light-tertiary;
+    text-decoration: none;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    margin: 0;
+
+    @include tablet {
+      font-size: 1.75rem;
+    }
+  }
+
+  &__group {
+    @include flex($justify: flex-end, $align: center);
+    padding: 0 1rem;
+    width: 100%;
+
+    @include tablet {
+      padding: 0;
+      width: auto;
+    }
+  }
+
+  &__score {
+    font-size: 0.8rem;
+    margin: 0;
+    text-transform: uppercase;
+  }
+}
