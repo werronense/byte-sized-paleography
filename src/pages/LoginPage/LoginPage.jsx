@@ -55,43 +55,54 @@ const LoginPage = () => {
   };
 
   return (
-    <>
-      <h1>Login Page</h1>
-      <form onSubmit={handleSubmit} action="/login">
-        <FormFieldInput
-          labelText="Username: "
-          inputType="text"
-          inputNameId="username"
-          inputPlaceholder="enter your username"
-          inputValue={formValues.username}
-          changeHandler={handleInputChange}
-          isRequired={true}
-        />
-        <FormFieldInput
-          labelText="Password: "
-          inputType="password"
-          inputNameId="password"
-          inputPlaceholder="enter your password"
-          inputValue={formValues.password}
-          changeHandler={handleInputChange}
-          isRequired={true}
-        />
-        <div>
-          <Btn
-            btnType="button"
-            btnText="Cancel"
-            btnDisabled={false}
-            clickHandler={() => navigate("/")}
+    <div className="login-page">
+      <div className="login-page__content-container">
+        <h1 className="login-page__title">Login Page</h1>
+        <section>
+          <p>
+            Log in to start playing and see where you are in the leaderboard!
+          </p>
+        </section>
+        <form
+          className="login-page__form"
+          onSubmit={handleSubmit}
+          action="/login"
+        >
+          <FormFieldInput
+            labelText="Username: "
+            inputType="text"
+            inputNameId="username"
+            inputPlaceholder="enter your username"
+            inputValue={formValues.username}
+            changeHandler={handleInputChange}
+            isRequired={true}
           />
-          <Btn
-            btnType="submit"
-            btnText="Log In"
-            btnModifier="success"
-            btnDisabled={!isFormValid}
+          <FormFieldInput
+            labelText="Password: "
+            inputType="password"
+            inputNameId="password"
+            inputPlaceholder="enter your password"
+            inputValue={formValues.password}
+            changeHandler={handleInputChange}
+            isRequired={true}
           />
-        </div>
-      </form>
-    </>
+          <div className="login-page__buttons">
+            <Btn
+              btnType="button"
+              btnText="Cancel"
+              btnDisabled={false}
+              clickHandler={() => navigate("/")}
+            />
+            <Btn
+              btnType="submit"
+              btnText="Log In"
+              btnModifier="success"
+              btnDisabled={!isFormValid}
+            />
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 

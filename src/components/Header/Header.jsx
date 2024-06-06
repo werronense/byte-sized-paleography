@@ -26,7 +26,7 @@ const Header = () => {
           <Btn
             btnType="button"
             btnText="Sign Out"
-            btnModifier="warn"
+            btnModifier="success"
             btnDisabled={false}
             clickHandler={handleSignout}
           />
