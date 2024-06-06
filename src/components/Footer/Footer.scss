@@ -1,0 +1,32 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/flex" as *;
+
+.site-footer {
+  @include flex($justify: center);
+  background-color: $dark-secondary;
+  color: $light-tertiary;
+  padding: 1.25rem 1rem;
+
+  @include tablet {
+    padding: 2rem 1.75rem 1.75rem 1.75rem;
+  }
+
+  &__text {
+    @include flex($direction: column, $align: center);
+    font-family: "Unifraktur Cook";
+    font-size: 1.25rem;
+    margin: 0;
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    & > *:first-child::after {
+      @include tablet {
+        content: "-";
+        padding: 0 0.25rem;
+      }
+    }
+  }
+}
