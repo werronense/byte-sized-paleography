@@ -55,52 +55,64 @@ const RegistrationPage = () => {
   };
 
   return (
-    <>
-      <h1>Get Started</h1>
-      <form onSubmit={handleSubmit} action="/register">
-        <FormFieldInput
-          labelText="Username: "
-          inputType="text"
-          inputNameId="username"
-          inputPlaceholder="choose a username"
-          inputValue={formValues.username}
-          changeHandler={handleInputChange}
-          isRequired={true}
-        />
-        <FormFieldInput
-          labelText="Email: "
-          inputType="email"
-          inputNameId="email"
-          inputPlaceholder="enter your email address"
-          inputValue={formValues.email}
-          changeHandler={handleInputChange}
-          isRequired={true}
-        />
-        <FormFieldInput
-          labelText="Password: "
-          inputType="password"
-          inputNameId="password"
-          inputPlaceholder="choose a password"
-          inputValue={formValues.password}
-          changeHandler={handleInputChange}
-          isRequired={true}
-        />
-        <div>
-        <Btn
-            btnType="button"
-            btnText="Cancel"
-            btnDisabled={false}
-            clickHandler={() => navigate("/")}
+    <div className="registration-page">
+      <div className="registration-page__content-container">
+        <h1 className="registration-page__title">Get Started</h1>
+        <section>
+          <p>
+            With a user account, you'll be able to track your progress and
+            compare your scores with other users.
+          </p>
+        </section>
+        <form
+          className="registration-page__form"
+          onSubmit={handleSubmit}
+          action="/register"
+        >
+          <FormFieldInput
+            labelText="Username: "
+            inputType="text"
+            inputNameId="username"
+            inputPlaceholder="choose a username"
+            inputValue={formValues.username}
+            changeHandler={handleInputChange}
+            isRequired={true}
           />
-          <Btn
-            btnType="submit"
-            btnText="Sign Up"
-            btnModifier="success"
-            btnDisabled={!isFormValid}
+          <FormFieldInput
+            labelText="Email: "
+            inputType="email"
+            inputNameId="email"
+            inputPlaceholder="enter your email address"
+            inputValue={formValues.email}
+            changeHandler={handleInputChange}
+            isRequired={true}
           />
-        </div>
-      </form>
-    </>
+          <FormFieldInput
+            labelText="Password: "
+            inputType="password"
+            inputNameId="password"
+            inputPlaceholder="choose a password"
+            inputValue={formValues.password}
+            changeHandler={handleInputChange}
+            isRequired={true}
+          />
+          <div className="registration-page__buttons">
+            <Btn
+              btnType="button"
+              btnText="Cancel"
+              btnDisabled={false}
+              clickHandler={() => navigate("/")}
+            />
+            <Btn
+              btnType="submit"
+              btnText="Sign Up"
+              btnModifier="success"
+              btnDisabled={!isFormValid}
+            />
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 

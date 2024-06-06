@@ -1,0 +1,43 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/flex" as *;
+@use "../../styles/partials/starry-background" as *;
+
+.registration-page {
+  @include flex($direction: column);
+  flex-grow: 1;
+
+  @include tablet {
+    @include starry-background;
+  }
+
+  &__content-container {
+    background-color: $light-primary;
+    border-radius: $border-radius;
+    flex-grow: 1;
+    margin: 0 auto;
+    max-width: 320px;
+    padding: 1rem 1rem 2rem 1rem;
+
+    @include tablet {
+      max-width: 600px;
+      padding: 2rem;
+    }
+  }
+
+  &__form {
+    @include flex($direction: column);
+    gap: 1rem;
+    max-width: 400px;
+
+    @include tablet {
+      margin: 2rem auto;
+    }
+  }
+
+  &__buttons {
+    @include flex($justify: flex-end);
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+}

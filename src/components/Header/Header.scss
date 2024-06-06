@@ -4,14 +4,13 @@
 
 .site-header {
   @include flex($direction: column, $align: center);
-  background-color: $dark-secondary;
+  background-color: $dark-primary;
   color: $light-tertiary;
   gap: 1.5rem;
   padding: 1.25rem 1rem;
   width: 100%;
 
   @include tablet {
-    background-color: $dark-primary;
     flex-direction: row;
     justify-content: space-between;
     padding: 1.75rem 2rem 2rem 2rem;
@@ -19,6 +18,7 @@
 
   &__link,
   &__link:visited {
+    border: none;
     color: $light-tertiary;
     text-decoration: none;
   }

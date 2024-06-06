@@ -1,7 +1,18 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/flex" as *;
 
 .form-field-input {
+  @include flex($direction: column);
+  gap: 0.5rem;
+
+  &__label {
+    font-weight: bold;
+  }
+
   &__input {
+    border: 1px solid $dark-secondary;
     border-radius: $border-radius;
+    flex-grow: 1;
+    padding: 0.5rem 0.75rem;
   }
 }
