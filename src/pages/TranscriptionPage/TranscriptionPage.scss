@@ -13,6 +13,7 @@
 
   &__content-container {
     background-color: $light-primary;
+    border-radius: $border-radius;
     flex-grow: 1;
     margin: 0 auto;
     max-width: 320px;
