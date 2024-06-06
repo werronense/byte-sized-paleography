@@ -107,11 +107,13 @@ const TranscriptionPage = () => {
   return (
     text && (
       <div className="transcription">
-        <img
-          className="transcription__image"
-          src={`${VITE_API_BASE_URL}/images/${text.image_url}`}
-          alt=""
-        />
+        <div className="transcription__container">
+          <img
+            className="transcription__image"
+            src={`${VITE_API_BASE_URL}/images/${text.image_url}`}
+            alt=""
+          />
+        </div>
         <p className="transcription__text">
           {userInput?.split("").map((letter, i) => (
             <span
@@ -126,16 +128,16 @@ const TranscriptionPage = () => {
             </span>
           ))}
         </p>
-        <form onSubmit={handleSubmit}>
+        <form className="transcription__interface" onSubmit={handleSubmit}>
           <input
+            className="transcription__input"
             name="input"
             type="text"
-            placeholder="Enter Your Transcription"
             value={userInput}
             onChange={handleInputChange}
             autoFocus={true}
           ></input>
-          <div>
+          <div className="transcription__controls">
             <Btn
               btnType="button"
               btnText="Home"

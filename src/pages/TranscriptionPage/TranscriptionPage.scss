@@ -1,10 +1,16 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/flex" as *;
 
 .transcription {
-  padding: 1rem 0.5rem;
+  padding: 1rem;
+
+  &__container {
+    @include flex($justify: center);
+  }
 
   &__image {
     box-shadow: 0 0 2px $dark-primary;
+    max-width: 300px;
   }
 
   &__text {
@@ -13,11 +19,33 @@
     font-weight: bold;
     height: 3.75rem;
     margin: 1rem 0;
+    text-align: center;
   }
 
   &__letter {
     &--error {
       color: $danger;
+    }
+  }
+
+  &__interface {
+    @include flex($direction: column);
+    width: 100%;
+  }
+
+  &__input {
+    font-size: 2rem;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  &__controls {
+    @include flex;
+    gap: 1.5rem;
+    padding: 2rem 0;
+
+    & > * {
+      flex-grow: 1;
     }
   }
 }
