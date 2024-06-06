@@ -7,12 +7,15 @@ const FormFieldInput = ({
   inputPlaceholder,
   inputValue,
   changeHandler,
-  isRequired
+  isRequired,
 }) => {
   return (
-    <div>
-      <label htmlFor={inputNameId}>{labelText}</label>
+    <div className="form-field-input">
+      <label className="form-field-input__label" htmlFor={inputNameId}>
+        {labelText}
+      </label>
       <input
+        className="form-field-input__input"
         type={inputType}
         name={inputNameId}
         id={inputNameId}

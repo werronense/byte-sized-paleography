@@ -1,0 +1,7 @@
+@use "../../styles/partials/variables" as *;
+
+.form-field-input {
+  &__input {
+    border-radius: $border-radius;
+  }
+}

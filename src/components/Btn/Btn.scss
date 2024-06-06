@@ -3,8 +3,9 @@
 .btn {
   background-color: $light-secondary;
   border: 1px solid $dark-secondary;
-  border-radius: 4px;
+  border-radius: $border-radius;
   color: $dark-secondary;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 0.5rem 1rem;
   text-transform: uppercase;
 

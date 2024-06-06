@@ -1,4 +1,6 @@
 @use "./variables" as *;
+@use "./breakpoints" as *;
+@use "./flex" as *;
 
 // global settings
 * {
@@ -12,11 +14,24 @@
   src: url("./assets/fonts/UnifrakturCook-Bold.ttf") format("truetype");
 }
 
+html,
+body {
+  @include flex($direction: column);
+  height: 100%;
+}
+
 body {
   background-color: $light-primary;
   color: $dark-primary;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 0;
   padding: 0;
+}
+
+#root {
+  @include flex($direction: column);
+  flex-grow: 1;
+  overflow: auto;
 }
 
 // headings
@@ -24,4 +39,5 @@ h1,
 h2 {
   font-family: "Unifraktur Cook";
   font-weight: 700;
+  letter-spacing: 2px;
 }
