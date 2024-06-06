@@ -13,6 +13,8 @@ import UpdateProfilePage from "./pages/UpdateProfilePage/UpdateProfilePage";
 import TranscriptionPage from "./pages/TranscriptionPage/TranscriptionPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
+import Footer from "./components/Footer/Footer";
+
 function App() {
   return (
     <BrowserRouter>
@@ -26,6 +28,7 @@ function App() {
         <Route path="/transcribe" element={<TranscriptionPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
