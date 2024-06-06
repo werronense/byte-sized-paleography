@@ -17,7 +17,8 @@
     padding: 1.75rem 2rem 2rem 2rem;
   }
 
-  &__link {
+  &__link,
+  &__link:visited {
     color: $light-tertiary;
     text-decoration: none;
   }

@@ -46,3 +46,15 @@ h2 {
 p {
   line-height: 1.75;
 }
+
+// links
+a {
+  border-bottom: 1px solid $dark-tertiary;
+  color: $dark-tertiary;
+  text-decoration: none;
+
+  &:visited {
+    border-bottom: 1px solid $dark-secondary;
+    color: $dark-secondary;
+  }
+}
