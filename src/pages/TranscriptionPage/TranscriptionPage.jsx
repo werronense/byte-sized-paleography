@@ -49,17 +49,19 @@ const TranscriptionPage = () => {
 
   const updateUserScore = async () => {
     try {
-      await axios.patch(`${VITE_API_BASE_URL}/api/users/score`,
-      { score: text.point_value },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      await axios.patch(
+        `${VITE_API_BASE_URL}/api/users/score`,
+        { score: text.point_value },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
     } catch (err) {
       console.error("POST request to /api/users/score failed: ", err);
     }
-  }
+  };
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
@@ -104,42 +106,54 @@ const TranscriptionPage = () => {
 
   return (
     text && (
-      <div>
-        <img src={`${VITE_API_BASE_URL}/images/${text.image_url}`} alt="" />
-        <p>
-          {userInput?.split("").map((letter, i) => (
-            <span
-              key={uuidv4()}
-              // todo: update error styling
-              className={letter === text.transcription[i] ? "" : "error"}
-            >
-              {letter}
-            </span>
-          ))}
-        </p>
-        <form onSubmit={handleSubmit}>
-          <input
-            name="input"
-            type="text"
-            placeholder="Enter Your Transcription"
-            value={userInput}
-            onChange={handleInputChange}
-          ></input>
-          <div>
-            <Btn
-              btnType="button"
-              btnText="Home"
-              btnDisabled={false}
-              clickHandler={handleClick}
-            />
-            <Btn
-              btnType="submit"
-              btnText="Next"
-              btnModifier="success"
-              btnDisabled={userInput !== text.transcription}
+      <div className="transcription">
+        <div className="transcription__content-container">
+          <div className="transcription__image-display">
+            <img
+              className="transcription__image"
+              src={`${VITE_API_BASE_URL}/images/${text.image_url}`}
+              alt=""
             />
           </div>
-        </form>
+          <p className="transcription__text">
+            {userInput?.split("").map((letter, i) => (
+              <span
+                key={uuidv4()}
+                className={`transcription__letter ${
+                  letter === text.transcription[i]
+                    ? ""
+                    : "transcription__letter--error"
+                }`}
+              >
+                {letter}
+              </span>
+            ))}
+          </p>
+          <form className="transcription__interface" onSubmit={handleSubmit}>
+            <input
+              className="transcription__input"
+              name="input"
+              type="text"
+              value={userInput}
+              onChange={handleInputChange}
+              autoFocus={true}
+            ></input>
+            <div className="transcription__controls">
+              <Btn
+                btnType="button"
+                btnText="Home"
+                btnDisabled={false}
+                clickHandler={handleClick}
+              />
+              <Btn
+                btnType="submit"
+                btnText="Next"
+                btnModifier="success"
+                btnDisabled={userInput !== text.transcription}
+              />
+            </div>
+          </form>
+        </div>
       </div>
     )
   );
