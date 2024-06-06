@@ -1,4 +1,5 @@
 @use "./variables" as *;
+@use "./breakpoints" as *;
 
 // global settings
 * {
@@ -15,6 +16,7 @@
 body {
   background-color: $light-primary;
   color: $dark-primary;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -24,4 +26,5 @@ h1,
 h2 {
   font-family: "Unifraktur Cook";
   font-weight: 700;
+  letter-spacing: 2px;
 }
