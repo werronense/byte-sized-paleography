@@ -1,4 +1,23 @@
-// temporary styles
-.error {
-  color: red;
+@use "../../styles/partials/variables" as *;
+
+.transcription {
+  padding: 1rem 0.5rem;
+
+  &__image {
+    box-shadow: 0 0 2px $dark-primary;
+  }
+
+  &__text {
+    font-family: "Unifraktur Cook";
+    font-size: 3rem;
+    font-weight: bold;
+    height: 3.75rem;
+    margin: 1rem 0;
+  }
+
+  &__letter {
+    &--error {
+      color: $danger;
+    }
+  }
 }

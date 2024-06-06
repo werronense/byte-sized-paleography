@@ -49,17 +49,19 @@ const TranscriptionPage = () => {
 
   const updateUserScore = async () => {
     try {
-      await axios.patch(`${VITE_API_BASE_URL}/api/users/score`,
-      { score: text.point_value },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      await axios.patch(
+        `${VITE_API_BASE_URL}/api/users/score`,
+        { score: text.point_value },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
     } catch (err) {
       console.error("POST request to /api/users/score failed: ", err);
     }
-  }
+  };
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
@@ -104,14 +106,21 @@ const TranscriptionPage = () => {
 
   return (
     text && (
-      <div>
-        <img src={`${VITE_API_BASE_URL}/images/${text.image_url}`} alt="" />
-        <p>
+      <div className="transcription">
+        <img
+          className="transcription__image"
+          src={`${VITE_API_BASE_URL}/images/${text.image_url}`}
+          alt=""
+        />
+        <p className="transcription__text">
           {userInput?.split("").map((letter, i) => (
             <span
               key={uuidv4()}
-              // todo: update error styling
-              className={letter === text.transcription[i] ? "" : "error"}
+              className={`transcription__letter ${
+                letter === text.transcription[i]
+                  ? ""
+                  : "transcription__letter--error"
+              }`}
             >
               {letter}
             </span>
@@ -124,6 +133,7 @@ const TranscriptionPage = () => {
             placeholder="Enter Your Transcription"
             value={userInput}
             onChange={handleInputChange}
+            autoFocus={true}
           ></input>
           <div>
             <Btn
