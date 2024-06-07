@@ -25,6 +25,20 @@
     }
   }
 
+  &__scores {
+    @include flex($direction: column);
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+
+    & > * {
+      margin: 0;
+    }
+
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+
   &__image-display {
     @include flex($justify: center);
   }
