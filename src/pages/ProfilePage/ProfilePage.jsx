@@ -5,6 +5,7 @@ import axios from "axios";
 import "./ProfilePage.scss";
 
 import Btn from "../../components/Btn/Btn";
+import Leaderboard from "../../components/Leaderboard/Leaderboard";
 
 const { VITE_API_BASE_URL } = import.meta.env;
 
@@ -50,38 +51,34 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <>
-      <h1>Profile Page</h1>
-      <div>
-        <p>{user.username}</p>
-        <p>{user.score}</p>
+    <div className="profile-page">
+      <div className="profile-page__content-container">
+        <section>
+          <h1 className="profile-page__title">Greetings, {user.username}!</h1>
+          <p>You currently have {user.score} points.</p>
+          <p>Check out the leaderboard to see how you compare with other users.</p>
+        </section>
+        <section className="profile-page__leaderboard">
+          <h2 className="profile-page__sub-heading">Leaderbaord</h2>
+          <Leaderboard leaderboard={leaderboard} />
+        </section>
+        <div className="profile-page__buttons">
+          <Btn
+            btnType="button"
+            btnText="Edit Profile"
+            btnDisabled={false}
+            clickHandler={() => navigate("/update-profile")}
+          />
+          <Btn
+            btnType="button"
+            btnText="Play Game!"
+            btnModifier="success"
+            btnDisabled={false}
+            clickHandler={() => navigate("/transcribe")}
+          />
+        </div>
       </div>
-      <div>
-        <ul>
-          {leaderboard?.map((topUser) => (
-            <li key={topUser.id}>
-              <span>{topUser.username}</span>
-              <span>{`${topUser.score} pts`}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div>
-      <Btn
-          btnType="button"
-          btnText="Edit Profile"
-          btnDisabled={false}
-          clickHandler={() => navigate("/update-profile")}
-        />
-        <Btn
-          btnType="button"
-          btnText="Play Game!"
-          btnModifier="success"
-          btnDisabled={false}
-          clickHandler={() => navigate("/transcribe")}
-        />
-      </div>
-    </>
+    </div>
   );
 };
 

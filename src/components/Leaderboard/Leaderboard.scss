@@ -1,0 +1,20 @@
+@use "../../styles/partials/variables" as *;
+
+.leaderboard {
+  border-spacing: 0px;
+  margin: 0 auto;
+  max-width: 400px;
+
+  &__head {
+    font-weight: bold;
+  }
+
+  &__cell {
+    border-bottom: 1px solid $dark-secondary;
+    padding: 0.5rem 0.75rem;
+
+    &:last-child {
+      border-left: 1px solid $dark-secondary;
+    }
+  }
+}
