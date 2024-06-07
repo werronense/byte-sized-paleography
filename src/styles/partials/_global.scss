@@ -35,11 +35,12 @@ body {
 }
 
 // headings
-h1,
+h1 {
+  font-size: 1.75rem;
+}
+
 h2 {
-  font-family: "Unifraktur Cook";
-  font-weight: 700;
-  letter-spacing: 2px;
+  color: $dark-secondary;
 }
 
 // paragraphs

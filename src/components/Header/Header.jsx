@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <header className="site-header">
       <Link className="site-header__link" to={token ? "/profile" : "/"}>
-        <h2 className="site-header__title">Byte-Sized Medieval Paleography</h2>
+        <p className="site-header__title">Byte-Sized Medieval Paleography</p>
       </Link>
       <div className="site-header__group">
         {token && (
