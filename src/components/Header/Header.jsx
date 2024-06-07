@@ -22,6 +22,15 @@ const Header = () => {
         <p className="site-header__title">Byte-Sized Medieval Paleography</p>
       </Link>
       <div className="site-header__group">
+      {!token && (
+          <Btn
+            btnType="button"
+            btnText="Sign In"
+            btnModifier="success"
+            btnDisabled={false}
+            clickHandler={() => navigate("/login")}
+          />
+        )}
         {token && (
           <Btn
             btnType="button"
