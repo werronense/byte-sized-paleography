@@ -31,6 +31,10 @@
     margin: 2rem 0;
   }
 
+  &__figcaption {
+    font-size: 0.75rem;
+  }
+
   &__buttons {
     @include flex($justify: flex-end);
     gap: 1rem;

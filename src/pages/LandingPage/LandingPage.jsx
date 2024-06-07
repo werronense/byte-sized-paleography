@@ -21,8 +21,13 @@ const LandingPage = () => {
         </p>
 
         <figure className="landing-page__figure">
-          <img src={hellmouth} alt="Medieval manuscript painting of a hellmouth." />
-          <figcaption>Morgan Library, MS M.945 fol. 107r</figcaption>
+          <img
+            src={hellmouth}
+            alt="Medieval manuscript painting of a hellmouth."
+          />
+          <figcaption className="landing-page__figcaption">
+            Morgan Library, MS M.945, fol. 107r, via Wikimedia Commons
+          </figcaption>
         </figure>
 
         {!token && (
