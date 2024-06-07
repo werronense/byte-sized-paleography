@@ -170,6 +170,7 @@ const TranscriptionPage = () => {
               <li>The letters 'u' and 'n' look very similar</li>
               <li>An 'm' and 'in' look almost identical</li>
               <li>The letters 'l' and 'i' look similar, but 'l' is a little taller</li>
+              <li>There's a special tall 's' that looks like an 'f'</li>
             </ul>
           </section>
         </div>
