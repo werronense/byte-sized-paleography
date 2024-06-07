@@ -26,7 +26,6 @@
     &--latin {
       @include flex($direction: column, $align: center);
       font-size: 0.75rem;
-      letter-spacing: 1px;
       gap: 0.5rem;
       margin: 0;
 
