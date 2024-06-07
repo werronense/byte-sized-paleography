@@ -105,9 +105,6 @@ The database will have tables for Users and Texts. These tables will have a many
 - point_value
 
 ### Endpoints
-
-List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
-
 #### Un-Authenticated Routes
 
 POST /api/register
@@ -118,30 +115,45 @@ POST /api/login
 
 - Response: 200, `{ token }`
 
+GET /api/leaderboard
+
+- Response: 200, Array of top ten users by score: `[{ id, username, score}]`
+
 #### Authenticated Routes
 
 GET /api/profile
 
-- Response: 200, `{ username, score }`
+- Response: 200, `{ id, username, score }`
 
 GET /api/text
 
 - Response: 200, `{ id, image_url, transcription, points }`
 
-POST /api/user/:userId/text/:textId
+POST /api/user/text
 
 - Response: 201
 
-PATCH /api/user/:id
+PATCH /api/users/username
 
-- Response: 200, `{ username, score }`
+- Response: 200, `{ message: "Username updated! }`
 
-DELETE /api/user/:id
+PATCH /api/users/email
+
+- Response: 200, `{ message: "Email updated! }`
+
+PATCH /api/users/password
+
+- Response: 200, `{ message: "Password updated! }`
+
+PATCH /api/users/score
+
+- Response: 200, `{ newTotal }`
+
+DELETE /api/users/
 
 - Response: 204
 
 ### Auth
-
 Users will create user profiles and log in to use the app. The server will authenticate users when they log in and provide JWT tokens to authorize HTTP requests.
 
 ## Roadmap
