@@ -3,10 +3,13 @@ import "./Footer.scss";
 const Footer = () => {
   return (
     <footer className="site-footer">
-      <p className="site-footer__text">
+      <small className="site-footer__text">
+        &copy; Stephen Werronen - 2024
+      </small>
+      <small className="site-footer__text--latin">
         <span>Stephanus Werronensis me fecit</span>
-        <span>anno domini mmxxiiij</span>
-      </p>
+        <span>Anno Domini MMXXiiij</span>
+      </small>
     </footer>
   );
 };
