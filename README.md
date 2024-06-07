@@ -1,5 +1,15 @@
 # Byte-Sized Medieval Paleography
 
+This is the front-end for the Byte-Sized Medieval Paleography app. There is another repo for the [project API](https://github.com/werronense/byte-sized-paleography-api).
+
+You can play the game by installing both repos locally. Installation instructions are available in the README files of the two repos.
+
+## Installation
+1. Clone the repository
+2. Run `npm install` to install all dependencies
+3. Set the base url in `.env` to match `http://localhost` plus the port you chose for the server when you installed the API
+4. Use `npm run dev` to run the site
+
 ## Overview
 
 Master the skill of reading old handwriting (paleography) the fun and easy way! This app helps you learn from real examples by breaking them into digestible pieces and giving you instant feedback as you type.
@@ -35,16 +45,19 @@ The user will use the app to practice transcribing, track their progress, and co
 #### Front End
 - React
   - react-router
-  - react-modal
   - axios
   - sass
+  - uuid
 
 #### Back End
 - Express
   - knex
+  - mysql2
   - cors
   - dotenv
   - jswebtoken
+  - bcrypt
+  - validator
 
 #### Database
 - MySQL
@@ -105,9 +118,6 @@ The database will have tables for Users and Texts. These tables will have a many
 - point_value
 
 ### Endpoints
-
-List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
-
 #### Un-Authenticated Routes
 
 POST /api/register
@@ -118,30 +128,45 @@ POST /api/login
 
 - Response: 200, `{ token }`
 
+GET /api/leaderboard
+
+- Response: 200, Array of top ten users by score: `[{ id, username, score}]`
+
 #### Authenticated Routes
 
 GET /api/profile
 
-- Response: 200, `{ username, score }`
+- Response: 200, `{ id, username, score }`
 
 GET /api/text
 
 - Response: 200, `{ id, image_url, transcription, points }`
 
-POST /api/user/:userId/text/:textId
+POST /api/user/text
 
 - Response: 201
 
-PATCH /api/user/:id
+PATCH /api/users/username
 
-- Response: 200, `{ username, score }`
+- Response: 200, `{ message: "Username updated! }`
 
-DELETE /api/user/:id
+PATCH /api/users/email
+
+- Response: 200, `{ message: "Email updated! }`
+
+PATCH /api/users/password
+
+- Response: 200, `{ message: "Password updated! }`
+
+PATCH /api/users/score
+
+- Response: 200, `{ newTotal }`
+
+DELETE /api/users/
 
 - Response: 204
 
 ### Auth
-
 Users will create user profiles and log in to use the app. The server will authenticate users when they log in and provide JWT tokens to authorize HTTP requests.
 
 ## Roadmap
