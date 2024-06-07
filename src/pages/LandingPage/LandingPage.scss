@@ -38,5 +38,9 @@
   &__buttons {
     @include flex($justify: flex-end);
     gap: 1rem;
+
+    @include tablet {
+      padding: 1rem 2rem;
+    }
   }
 }
