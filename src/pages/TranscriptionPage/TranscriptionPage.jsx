@@ -11,6 +11,7 @@ const { VITE_API_BASE_URL } = import.meta.env;
 
 const TranscriptionPage = () => {
   const [text, setText] = useState({});
+  const [userScore, setUserScore] = useState("");
   const [userInput, setUserInput] = useState("");
 
   // get the authentication token from sessionStorage
@@ -31,6 +32,20 @@ const TranscriptionPage = () => {
     }
   };
 
+  const getUserScore = async () => {
+    try {
+      const response = await axios.get(`${VITE_API_BASE_URL}/api/profile`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setUserScore(response.data.score);
+    } catch (err) {
+      console.error("GET request to /api/profile failed: ", err);
+    }
+  }
+
   const updateUsersTexts = async () => {
     try {
       await axios.post(
@@ -49,7 +64,7 @@ const TranscriptionPage = () => {
 
   const updateUserScore = async () => {
     try {
-      await axios.patch(
+      const response = await axios.patch(
         `${VITE_API_BASE_URL}/api/users/score`,
         { score: text.point_value },
         {
@@ -58,6 +73,7 @@ const TranscriptionPage = () => {
           },
         }
       );
+      setUserScore(response.data.newTotal);
     } catch (err) {
       console.error("POST request to /api/users/score failed: ", err);
     }
@@ -96,6 +112,7 @@ const TranscriptionPage = () => {
     // redirect unauthorized users to the login page
     if (!token) return navigate("/login");
 
+    getUserScore();
     getText();
   }, []);
 
@@ -108,6 +125,10 @@ const TranscriptionPage = () => {
     text && (
       <div className="transcription">
         <div className="transcription__content-container">
+          <div className="transcription__scores">
+            <p>Your current score is <span className="bold">{userScore} points</span>.</p>
+            <p>This text is worth <span className="bold">{text.point_value} points</span>.</p>
+          </div>
           <div className="transcription__image-display">
             <img
               className="transcription__image"
@@ -137,6 +158,7 @@ const TranscriptionPage = () => {
               value={userInput}
               onChange={handleInputChange}
               autoFocus={true}
+              autoComplete="off"
             ></input>
             <div className="transcription__controls">
               <Btn
@@ -153,6 +175,26 @@ const TranscriptionPage = () => {
               />
             </div>
           </form>
+          <section>
+            <h2>Instructions</h2>
+            <ol>
+              <li>Start typing the letters you see in the image</li>
+              <li>The feedback section will display what you type</li>
+              <li>Change the incorrect (red) letters until you get them right</li>
+            </ol>
+          </section>
+          <section>
+            <h2>Hints</h2>
+            <ul>
+              <li>The words are in Latin, so don't expect to understand them!</li>
+              <li>All letters are lowercase</li>
+              <li>This script uses 'u' instead of 'v'</li>
+              <li>The letters 'u' and 'n' look very similar</li>
+              <li>An 'm' and 'in' look almost identical</li>
+              <li>The letters 'l' and 'i' look similar, but 'l' is a little taller</li>
+              <li>There's a special tall 's' that looks like an 'f'</li>
+            </ul>
+          </section>
         </div>
       </div>
     )
