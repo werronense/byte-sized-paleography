@@ -59,7 +59,7 @@ const ProfilePage = () => {
           <p>Check out the leaderboard to see how you compare with other users.</p>
         </section>
         <section className="profile-page__leaderboard">
-          <h2 className="profile-page__sub-heading">Leaderbaord</h2>
+          <h2 className="profile-page__sub-heading">Leaderboard</h2>
           <Leaderboard leaderboard={leaderboard} />
         </section>
         <div className="profile-page__buttons">
