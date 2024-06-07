@@ -3,20 +3,24 @@
 @use "../../styles/partials/flex" as *;
 
 .site-header {
-  @include flex($direction: column, $align: center);
   background-color: $dark-primary;
   color: $light-tertiary;
-  gap: 1.5rem;
   padding: 1.25rem 1rem;
   width: 100%;
 
-  @include tablet {
+  @include desktop {
+    padding: 1.75rem 2rem 3rem 2rem;
   }
 
-  @include desktop {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1.75rem 2rem 2rem 2rem;
+  &__container {
+    @include flex($direction: column, $align: center);
+    gap: 1.5rem;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 5rem;
+      justify-content: center;
+    }
   }
 
   &__link,

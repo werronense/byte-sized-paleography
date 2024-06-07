@@ -18,37 +18,39 @@ const Header = () => {
 
   return (
     <header className="site-header">
-      <Link className="site-header__link" to={token ? "/profile" : "/"}>
-        <p className="site-header__title">Byte-Sized Medieval Paleography</p>
-      </Link>
-      <div className="site-header__group">
-        {!token && (
-          <>
+      <div className="site-header__container">
+        <Link className="site-header__link" to={token ? "/profile" : "/"}>
+          <p className="site-header__title">Byte-Sized Medieval Paleography</p>
+        </Link>
+        <div className="site-header__group">
+          {!token && (
+            <>
+              <Btn
+                btnType="button"
+                btnText="Register"
+                btnModifier="success"
+                btnDisabled={false}
+                clickHandler={() => navigate("/register")}
+              />
+              <Btn
+                btnType="button"
+                btnText="Sign In"
+                btnModifier="success"
+                btnDisabled={false}
+                clickHandler={() => navigate("/login")}
+              />
+            </>
+          )}
+          {token && (
             <Btn
               btnType="button"
-              btnText="Register"
+              btnText="Sign Out"
               btnModifier="success"
               btnDisabled={false}
-              clickHandler={() => navigate("/register")}
+              clickHandler={handleSignout}
             />
-            <Btn
-              btnType="button"
-              btnText="Sign In"
-              btnModifier="success"
-              btnDisabled={false}
-              clickHandler={() => navigate("/login")}
-            />
-          </>
-        )}
-        {token && (
-          <Btn
-            btnType="button"
-            btnText="Sign Out"
-            btnModifier="success"
-            btnDisabled={false}
-            clickHandler={handleSignout}
-          />
-        )}
+          )}
+        </div>
       </div>
     </header>
   );

@@ -3,17 +3,24 @@
 @use "../../styles/partials/flex" as *;
 
 .site-footer {
-  @include flex($direction: column);
   background-color: $dark-secondary;
   color: $light-tertiary;
-  gap: 2rem;
   padding: 1.25rem 1rem;
 
   @include tablet {
-    flex-direction: row;
     margin-top: 2rem;
-    justify-content: space-between;
     padding: 1rem 1.75rem 1.75rem 1.75rem;
+  }
+
+  &__container {
+    @include flex($direction: column);
+    gap: 2rem;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 5rem;
+      justify-content: center;
+    }
   }
 
   &__text {
