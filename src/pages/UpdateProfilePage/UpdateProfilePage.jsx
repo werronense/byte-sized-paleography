@@ -95,66 +95,103 @@ const UpdateProfilePage = () => {
   };
 
   return (
-    <>
-      <h1>Update Profile</h1>
-      <form
-        onSubmit={(e) => handleFormSubmit(e, "username")}
-        action="/update-profile"
-      >
-        <p>{messages.username.message || messages.username.error || ""}</p>
-        <FormFieldInput
-          labelText="New Username"
-          inputType="text"
-          inputNameId="username"
-          inputPlaceholder="Enter a new username"
-          inputValue={formValues.username}
-          changeHandler={handleInputChange}
-          isRequired={true}
-        />
-        <Btn btnType="submit" btnText="Change Username" btnDisabled={false} />
-      </form>
-      <form
-        onSubmit={(e) => handleFormSubmit(e, "email")}
-        action="/update-profile"
-      >
-        <p>{messages.email.message || messages.email.error || ""}</p>
-        <FormFieldInput
-          labelText="New Email"
-          inputType="email"
-          inputNameId="email"
-          inputPlaceholder="Enter a new email"
-          inputValue={formValues.email}
-          changeHandler={handleInputChange}
-          isRequired={true}
-        />
-        <Btn btnType="submit" btnText="Change Email" btnDisabled={false} />
-      </form>
-      <form
-        onSubmit={(e) => handleFormSubmit(e, "password")}
-        action="/update-profile"
-      >
-        <p>{messages.password.message || messages.password.error || ""}</p>
-        <FormFieldInput
-          labelText="New Password"
-          inputType="password"
-          inputNameId="password"
-          inputPlaceholder="Enter a new password"
-          inputValue={formValues.password}
-          changeHandler={handleInputChange}
-          isRequired={true}
-        />
-        <Btn btnType="submit" btnText="Change Password" btnDisabled={false} />
-      </form>
-      <div>
-        <Btn
-          btnType="button"
-          btnText="Delete Account"
-          btnModifier="danger"
-          clickHandler={handleDeleteUser}
-          btnDisabled={false}
-        />
+    <div className="update-page">
+      <div className="update-page__content-container">
+        <h1>Update Profile</h1>
+        <form
+          className="update-page__form"
+          onSubmit={(e) => handleFormSubmit(e, "username")}
+          action="/update-profile"
+        >
+          <p
+            className={`update-page__message ${
+              messages.username.error ? "update-page__message--error" : ""
+            }`}
+          >
+            {messages.username.message || messages.username.error || ""}
+          </p>
+          <FormFieldInput
+            labelText="New Username"
+            inputType="text"
+            inputNameId="username"
+            inputPlaceholder="Enter a new username"
+            inputValue={formValues.username}
+            changeHandler={handleInputChange}
+            isRequired={true}
+          />
+          <div className="update-page__submit">
+            <Btn
+              btnType="submit"
+              btnText="Change Username"
+              btnDisabled={false}
+            />
+          </div>
+        </form>
+        <form
+          className="update-page__form"
+          onSubmit={(e) => handleFormSubmit(e, "email")}
+          action="/update-profile"
+        >
+          <p
+            className={`update-page__message ${
+              messages.email.error ? "update-page__message--error" : ""
+            }`}
+          >
+            {messages.email.message || messages.email.error || ""}
+          </p>
+          <FormFieldInput
+            labelText="New Email"
+            inputType="email"
+            inputNameId="email"
+            inputPlaceholder="Enter a new email"
+            inputValue={formValues.email}
+            changeHandler={handleInputChange}
+            isRequired={true}
+          />
+          <div className="update-page__submit">
+            <Btn btnType="submit" btnText="Change Email" btnDisabled={false} />
+          </div>
+        </form>
+        <form
+          className="update-page__form"
+          onSubmit={(e) => handleFormSubmit(e, "password")}
+          action="/update-profile"
+        >
+          <p
+            className={`update-page__message ${
+              messages.password.error ? "update-page__message--error" : ""
+            }`}
+          >
+            {messages.password.message || messages.password.error || ""}
+          </p>
+          <FormFieldInput
+            labelText="New Password"
+            inputType="password"
+            inputNameId="password"
+            inputPlaceholder="Enter a new password"
+            inputValue={formValues.password}
+            changeHandler={handleInputChange}
+            isRequired={true}
+          />
+          <div className="update-page__submit">
+            <Btn
+              btnType="submit"
+              btnText="Change Password"
+              btnDisabled={false}
+            />
+          </div>
+        </form>
+        <div className="update-page__delete">
+          <Btn
+            btnType="button"
+            btnText="Delete Account"
+            btnModifier="danger"
+            clickHandler={handleDeleteUser}
+            btnDisabled={false}
+          />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
