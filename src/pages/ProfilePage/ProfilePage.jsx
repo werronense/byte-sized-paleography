@@ -50,38 +50,40 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <>
-      <h1>Profile Page</h1>
-      <div>
-        <p>{user.username}</p>
-        <p>{user.score}</p>
-      </div>
-      <div>
-        <ul>
-          {leaderboard?.map((topUser) => (
-            <li key={topUser.id}>
-              <span>{topUser.username}</span>
-              <span>{`${topUser.score} pts`}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div>
-      <Btn
-          btnType="button"
-          btnText="Edit Profile"
-          btnDisabled={false}
-          clickHandler={() => navigate("/update-profile")}
-        />
+    <div className="profile-page">
+      <div className="profile-page__content-container">
+        <h1>Profile Page</h1>
+        <div>
+          <p>{user.username}</p>
+          <p>{user.score}</p>
+        </div>
+        <div>
+          <ul>
+            {leaderboard?.map((topUser) => (
+              <li key={topUser.id}>
+                <span>{topUser.username}</span>
+                <span>{`${topUser.score} pts`}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="profile-page__buttons">
         <Btn
-          btnType="button"
-          btnText="Play Game!"
-          btnModifier="success"
-          btnDisabled={false}
-          clickHandler={() => navigate("/transcribe")}
-        />
+            btnType="button"
+            btnText="Edit Profile"
+            btnDisabled={false}
+            clickHandler={() => navigate("/update-profile")}
+          />
+          <Btn
+            btnType="button"
+            btnText="Play Game!"
+            btnModifier="success"
+            btnDisabled={false}
+            clickHandler={() => navigate("/transcribe")}
+          />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
