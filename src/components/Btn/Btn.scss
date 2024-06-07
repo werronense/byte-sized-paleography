@@ -10,6 +10,12 @@
   padding: 0.5rem 1rem;
   text-transform: uppercase;
 
+  &--inverse {
+    background-color: $dark-secondary;
+    border-color: $dark-secondary;
+    color: $light-secondary;
+  }
+
   &--success {
     background-color: $success;
     border-color: $success;
