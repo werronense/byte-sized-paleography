@@ -1,0 +1,50 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/flex" as *;
+@use "../../styles/partials/starry-background" as *;
+
+.landing-page {
+  @include flex($direction: column);
+  flex-grow: 1;
+
+  @include tablet {
+    @include starry-background;
+  }
+
+  &__content-container {
+    background-color: $light-primary;
+    border-radius: $border-radius;
+    flex-grow: 1;
+    margin: 0 auto;
+    max-width: 320px;
+    padding: 1rem;
+
+    @include tablet {
+      max-width: 600px;
+      padding: 2rem;
+    }
+  }
+
+  &__figure {
+    @include flex($align: center, $direction: column);
+    gap: 0.5rem;
+    margin: 2rem 0;
+  }
+
+  &__image {
+    max-width: 100%;
+  }
+
+  &__figcaption {
+    font-size: 0.75rem;
+  }
+
+  &__buttons {
+    @include flex($justify: flex-end);
+    gap: 1rem;
+
+    @include tablet {
+      padding: 1rem 2rem;
+    }
+  }
+}

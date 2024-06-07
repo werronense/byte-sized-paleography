@@ -1,0 +1,39 @@
+@use "../../styles/partials/variables" as *;
+
+.btn {
+  background-color: $light-secondary;
+  border: 1px solid $dark-secondary;
+  border-radius: $border-radius;
+  color: $dark-secondary;
+  cursor: pointer;
+  font-family: "Open Sans", Arial, sans-serif;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+
+  &--inverse {
+    background-color: $dark-secondary;
+    border-color: $dark-secondary;
+    color: $light-secondary;
+  }
+
+  &--success {
+    background-color: $success;
+    border-color: $success;
+    color: $light-primary;
+  }
+
+  &--warn {
+    background-color: $warn;
+    border-color: $warn;
+  }
+
+  &--danger {
+    background-color: $danger;
+    border-color: $danger;
+    color: $light-primary;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}

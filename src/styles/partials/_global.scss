@@ -1,0 +1,95 @@
+@use "./variables" as *;
+@use "./breakpoints" as *;
+@use "./flex" as *;
+
+// global settings
+* {
+  box-sizing: border-box;
+}
+
+// import fonts
+@font-face {
+  font-family: "Unifraktur Cook";
+  font-weight: 700;
+  src: url("./assets/fonts/UnifrakturCook-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 300;
+  src: url("./assets/fonts/OpenSans-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 400;
+  src: url("./assets/fonts/OpenSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 500;
+  src: url("./assets/fonts/OpenSans-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 700;
+  src: url("./assets/fonts/OpenSans-Bold.ttf") format("truetype");
+}
+
+html,
+body {
+  @include flex($direction: column);
+  height: 100%;
+}
+
+body {
+  color: $dark-primary;
+  font-family: "Open Sans", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+
+  @include tablet {
+    background-color: $dark-secondary;
+  }
+}
+
+#root {
+  @include flex($direction: column);
+  flex-grow: 1;
+  overflow: auto;
+}
+
+// headings
+h1 {
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+h2 {
+  color: $dark-secondary;
+  font-weight: 500;
+}
+
+// paragraphs
+p {
+  line-height: 1.75;
+}
+
+// links
+a {
+  border-bottom: 1px solid $dark-tertiary;
+  color: $dark-tertiary;
+  text-decoration: none;
+
+  &:visited {
+    border-bottom: 1px solid $dark-secondary;
+    color: $dark-secondary;
+  }
+}
+
+// bold
+.bold {
+  font-weight: bold;
+}

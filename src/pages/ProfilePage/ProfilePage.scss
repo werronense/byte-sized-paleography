@@ -1,0 +1,53 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/flex" as *;
+@use "../../styles/partials/starry-background" as *;
+
+.profile-page {
+  @include flex($direction: column);
+  flex-grow: 1;
+
+  @include tablet {
+    @include starry-background;
+  }
+
+  &__content-container {
+    background-color: $light-primary;
+    border-radius: $border-radius;
+    flex-grow: 1;
+    margin: 0 auto;
+    max-width: 320px;
+    padding: 1rem 1rem 2rem 1rem;
+    width: 100%;
+
+    @include tablet {
+      max-width: 600px;
+      padding: 2rem;
+    }
+  }
+
+  &__sub-heading {
+    @include tablet {
+      text-align: center;
+    }
+  }
+
+  &__buttons {
+    @include flex;
+    margin-top: 2rem;
+    gap: 1rem;
+
+    & > * {
+      flex-grow: 1;
+    }
+
+    @include tablet {
+      justify-content: flex-end;
+      margin-top: 2.5rem;
+
+      & > * {
+        flex-grow: 0;
+      }
+    }
+  }
+}
