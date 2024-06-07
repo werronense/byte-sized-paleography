@@ -45,16 +45,19 @@ The user will use the app to practice transcribing, track their progress, and co
 #### Front End
 - React
   - react-router
-  - react-modal
   - axios
   - sass
+  - uuid
 
 #### Back End
 - Express
   - knex
+  - mysql2
   - cors
   - dotenv
   - jswebtoken
+  - bcrypt
+  - validator
 
 #### Database
 - MySQL
