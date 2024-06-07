@@ -1,5 +1,15 @@
 # Byte-Sized Medieval Paleography
 
+This is the front-end for the Byte-Sized Medieval Paleography app. There is another repo for the [project API](https://github.com/werronense/byte-sized-paleography-api).
+
+You can play the game by installing both repos locally. Installation instructions are available in the README files of the two repos.
+
+## Installation
+1. Clone the repository
+2. Run `npm install` to install all dependencies
+3. Set the base url in `.env` to match `http://localhost` plus the port you chose for the server when you installed the API
+4. Use `npm run dev` to run the site
+
 ## Overview
 
 Master the skill of reading old handwriting (paleography) the fun and easy way! This app helps you learn from real examples by breaking them into digestible pieces and giving you instant feedback as you type.
