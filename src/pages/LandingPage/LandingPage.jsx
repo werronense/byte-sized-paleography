@@ -1,6 +1,8 @@
 import { useNavigate, Link } from "react-router-dom";
 import "./LandingPage.scss";
 
+import hellmouth from "../../assets/images/master-of-cleves-hellmouth.jpeg";
+
 import Btn from "../../components/Btn/Btn";
 
 const LandingPage = () => {
@@ -17,6 +19,11 @@ const LandingPage = () => {
           easy way! This app helps you learn from real examples by breaking them
           into digestible pieces and giving you instant feedback as you type.
         </p>
+
+        <figure className="landing-page__figure">
+          <img src={hellmouth} alt="Medieval manuscript painting of a hellmouth." />
+          <figcaption>Morgan Library, MS M.945 fol. 107r</figcaption>
+        </figure>
 
         {!token && (
           <div className="landing-page__buttons">

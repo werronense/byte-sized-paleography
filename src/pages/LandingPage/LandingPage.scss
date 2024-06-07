@@ -25,6 +25,12 @@
     }
   }
 
+  &__figure {
+    @include flex($align: center, $direction: column);
+    gap: 0.5rem;
+    margin: 2rem 0;
+  }
+
   &__buttons {
     @include flex($justify: flex-end);
     gap: 1rem;
