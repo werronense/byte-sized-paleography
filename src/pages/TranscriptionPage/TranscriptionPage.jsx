@@ -153,6 +153,25 @@ const TranscriptionPage = () => {
               />
             </div>
           </form>
+          <section>
+            <h2>Instructions</h2>
+            <ol>
+              <li>Start typing the letters you see in the image</li>
+              <li>The feedback section will display what you type</li>
+              <li>Change the incorrect (red) letters until you get them right</li>
+            </ol>
+          </section>
+          <section>
+            <h2>Hints</h2>
+            <ul>
+              <li>The words are in Latin, so don't expect to understand them!</li>
+              <li>All letters are lowercase</li>
+              <li>This script uses 'u' instead of 'v'</li>
+              <li>The letters 'u' and 'n' look very similar</li>
+              <li>An 'm' and 'in' look almost identical</li>
+              <li>The letters 'l' and 'i' look similar, but 'l' is a little taller</li>
+            </ul>
+          </section>
         </div>
       </div>
     )
