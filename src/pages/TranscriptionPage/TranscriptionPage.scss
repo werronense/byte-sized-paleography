@@ -41,6 +41,7 @@
 
   &__image-display {
     @include flex($justify: center);
+    height: 5rem;
   }
 
   &__image {
