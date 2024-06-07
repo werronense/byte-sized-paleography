@@ -23,6 +23,7 @@ const LandingPage = () => {
 
         <figure className="landing-page__figure">
           <img
+            className="landing-page__image"
             src={hellmouth}
             alt="Medieval manuscript painting of a hellmouth."
           />
@@ -65,6 +66,7 @@ const LandingPage = () => {
 
         <figure className="landing-page__figure">
           <img
+            className="landing-page__image"
             src={manuscript}
             alt="A page of medieval text written in Gothic bookhand."
           />
