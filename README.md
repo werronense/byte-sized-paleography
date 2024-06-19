@@ -2,9 +2,11 @@
 
 This is the front-end for the Byte-Sized Medieval Paleography app. There is another repo for the [project API](https://github.com/werronense/byte-sized-paleography-api).
 
-You can play the game by installing both repos locally. Installation instructions are available in the README files of the two repos.
+To see how it works, try it out yourself with this [live demo](https://byte-sized-paleography-demo.netlify.app/play).
 
 ## Installation
+You can play the full version of the game by installing both repos locally. Installation instructions are available in the README files of the two repos.
+
 1. Clone the repository
 2. Run `npm install` to install all dependencies
 3. Set the base url in `.env` to match `http://localhost` plus the port you chose for the server when you installed the API
